@@ -16,4 +16,11 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.get('/', async({view}) =>{
+    return view.render('home');
+});
+
+Route.group(()=>{
+    Route.get('register', 'UserRegisterController.viewReg').as('regView');
+    Route.post('register', 'UserRegisterController.register').as('userRegister');
+}).prefix('user');
