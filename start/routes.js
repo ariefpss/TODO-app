@@ -21,6 +21,12 @@ Route.get('/', async({view}) =>{
 });
 
 Route.group(()=>{
+    //TODO:User Register
     Route.get('register', 'UserRegisterController.viewReg').as('regView');
     Route.post('register', 'UserRegisterController.register').as('userRegister');
+
+    //TODO:User Login
+    Route.get('login', 'Auth/AuthUserController.viewLog').as('logView');
+    Route.post('login', 'Auth/AuthUserController.login').as('userLogin')
+
 }).prefix('user');
