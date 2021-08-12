@@ -11,8 +11,20 @@ class AuthUserController {
 
         await auth.attempt(email, password);
 
-        return response.route('todotask');
+        return response.route('todoView');
     };
+
+    async logout({auth, response}){
+
+        await auth.logout();
+        
+        return response.route('/user/login');
+    }
+
+    async viewTodo({view}){
+        return view.render('todotask')
+    }
+    
 }
 
 module.exports = AuthUserController

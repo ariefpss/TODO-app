@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/core-theme.css">
+    <title>Adonis TODO App</title>
+</head>
+<body>
+
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bg-light">TODO Task App</div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Add Task</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+            </div>
+        </div>
+
+        <!-- Page content wrapper-->
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('userLogout') }}">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Page content-->
+            <div class="container-fluid">
+                <h1 class="mt-4">Simple Sidebar</h1>
+                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                <p>
+                    Make sure to keep all page content within the
+                    <code>#page-content-wrapper</code>
+                    . The top navbar is optional, and just for demonstration. Just create an element with the
+                    <code>#sidebarToggle</code>
+                    ID which will toggle the menu when clicked.
+                </p>
+            </div>
+        </div>
+    </div>
+   
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/core-theme.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>
