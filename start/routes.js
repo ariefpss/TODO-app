@@ -31,6 +31,8 @@ Route.group(()=>{
     Route.get('logout', 'Auth/AuthUserController.logout').as('userLogout').middleware(['auth']);
 
     //TODO:TODO Task App
-    Route.get('todotask', 'Auth/AuthUserController.viewTodo').as('todoView').middleware(['auth']);
+    Route.get('todotask', 'Auth/TodoTaskController.viewTodo').as('todoView').middleware(['auth']);
+    Route.get('todotask/addtask', 'Auth/TodoTaskController.viewAddTask').as('addTaskView').middleware(['auth'])
+    Route.post('todotask/addtask', 'Auth/TodoTaskController.addTask').as('addTaskTodo').middleware(['auth'])
 
 }).prefix('user');

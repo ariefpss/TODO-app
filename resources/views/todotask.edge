@@ -6,6 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/core-theme.css">
+    <style>
+        .stroked { 
+            text-decoration: line-through; 
+        }
+    </style>
     <title>Adonis TODO App</title>
 </head>
 <body>
@@ -16,12 +21,8 @@
         <div class="border-end bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading border-bottom bg-light">TODO Task App</div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Add Task</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3 active" href="{{ route('todoView') }}">List Task</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{ route('addTaskView') }}">Add Task</a>
             </div>
         </div>
 
@@ -32,7 +33,6 @@
                 <div class="container-fluid">
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                            <li class="nav-item active"><a class="nav-link" href="#!">Home</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{ route('userLogout') }}">Logout</a></li>
                         </ul>
                     </div>
@@ -41,22 +41,46 @@
 
             <!-- Page content-->
             <div class="container-fluid">
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
-                <p>
-                    Make sure to keep all page content within the
-                    <code>#page-content-wrapper</code>
-                    . The top navbar is optional, and just for demonstration. Just create an element with the
-                    <code>#sidebarToggle</code>
-                    ID which will toggle the menu when clicked.
-                </p>
+                <div class="card" style="margin-top: 80px">
+                    <div class="card-header">
+                        List My Task
+                    </div>
+
+                    <table class="table table-hovered table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <td class="text-center">Status</td>
+                                <td class="text-center">Task</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @each(task in tasks)
+                              <tr>
+                                  <td class="text-center"><input class="form-check-input checktask" type="checkbox"></td>
+                                  <td id="taskData">{{ task.task }}</td>
+                              </tr>
+                            @endeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-   
+
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/core-theme.js"></script>
     <script src="/js/main.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $('.checktask').change(function () {
+            if (this.checked) {
+                $(this).closest('tr').css("text-decoration", "line-through")
+            } else {
+                $(this).closest('tr').css("text-decoration", "none")
+            }
+        });
+    </script>
 </body>
 </html>
