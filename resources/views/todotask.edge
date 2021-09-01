@@ -51,14 +51,19 @@
                             <tr>
                                 <td class="text-center">Status</td>
                                 <td class="text-center">Task</td>
+                                <td class="text-center">Action</td>
                             </tr>
                         </thead>
                         <tbody>
                             @each(task in tasks)
-                              <tr>
-                                  <td class="text-center"><input class="form-check-input checktask" type="checkbox"></td>
-                                  <td id="taskData">{{ task.task }}</td>
-                              </tr>
+                                <tr>
+                                    <td class="text-center"><input class="form-check-input checktask" type="checkbox"></td>
+                                    <td>{{ task.task }}</td>
+                                    <td class="text-center">
+                                            <a type="submit" class="btn btn-success">Update</a>
+                                            <a type="submit" class="btn btn-danger" href="{{ route('deleteTaskTodo', { id : task.id }) }}">Delete</a>
+                                    </td>
+                                </tr>
                             @endeach
                         </tbody>
                     </table>

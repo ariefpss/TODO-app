@@ -38,6 +38,19 @@ class TodoTaskController {
         return response.redirect('back');
 
     };
+
+    async updateTask({request, session, response}){
+        
+    };
+
+    async deleteTask({params, session, response}){
+        const idTask = params.id;
+        const todoDel = await Task.find(idTask);
+
+        await todoDel.delete();
+
+        response.redirect('back')
+    };
 }
 
 module.exports = TodoTaskController;
